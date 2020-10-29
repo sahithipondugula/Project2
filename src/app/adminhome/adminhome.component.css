@@ -1,0 +1,97 @@
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.bg {
+  /* The image used */
+  /* background-image: url("https://photosfine.files.wordpress.com/2012/04/most-of-buildings.jpg"); */
+opacity: 1;
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.welcome{
+  background-position-y: center;
+  background-position-x: center;
+ padding-top: 250px;
+ /* color: whitesmoke; */
+ color: white;
+}
+h1{
+  text-align: center;
+  font-style: italic;
+  font-weight: bolder;
+
+}
+p{
+  text-align: center;
+  font-size: x-large;
+
+}
+/* .navbar-logo{
+  padding-right: 20px;
+  padding-left: 0;
+} */
+ .logo{
+padding-right: 20px;
+height: 60px;
+width:80px;
+} 
+.dropdown-menu{
+  height:100px;
+  overflow-y:auto;
+}
+
+.navbar{
+  height: 80px;
+  /* padding-left: 10px; */
+  /* background-color:rgba(0, 0, 0, 0.897); */
+  /* background-color: rgb(247, 112, 1); */
+  background-color: rgb(255, 123, 0);
+}
+.navbar-brand{
+  font-family:cursive;
+  font-weight: bold;
+  color:white;
+  font-size: 50px;
+  text-align: left;
+  float: left;
+  /* padding-left: 10px; */
+
+}
+/* .navbar-brand:hover{
+font-size:55px ;
+} */
+.nav-item{
+float: right;
+}
+.nav-link{
+  color: white;
+  font-size: larger;
+  
+}
+#navbarDropdownMenuLink{
+padding-left: 60px;
+color: white;
+font-weight: bold;
+}
+.dropdown-item:hover{
+color: blue;
+}
+.welcome{
+text-align: center;
+}
+h2{
+font-size: 70px;
+font-weight: bold;
+font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+font: outline;
+}
+h4{
+font-family: cursive;
+}

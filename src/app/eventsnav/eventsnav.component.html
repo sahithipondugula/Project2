@@ -1,0 +1,52 @@
+<!-- <app-navbar></app-navbar> -->
+<html>
+<head>
+    <!-- <link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
+       
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
+        <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" /> -->
+
+</head>
+  <body>
+  <div class="container">
+        <div class="card w-100" 
+        style="border-style:ridge; font-size: 25px; font-style: italic;
+       align-content: center; text-align: center; height: 7cm;">
+         <div class="card-body">
+             <h1 style="color: black; ">{{employee.header}}</h1>
+            
+                 <h1 style="color: black; font-size: 20px;">{{employee.description}}</h1>
+     
+       </div>
+     
+     </div>
+</div>
+     <!------------------------>
+    <mdb-carousel [isControls]="true" class="carousel-multi-item multi-animation" [type]="'carousel-multi-item'"
+    [animation]="'slide'">
+<mdb-carousel-item *ngFor="let item of slides; let i = index">
+<div class="col-md-4" [ngClass]="{'d-none d-md-block': cardIndex !== 0}"
+*ngFor="let card of item; let cardIndex = index">
+<mdb-card class="my-1">
+<mdb-card-img [src]="card.img" alt="Card image cap"></mdb-card-img>
+</mdb-card>
+</div>
+</mdb-carousel-item>
+</mdb-carousel>
+
+  </body>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"></script>
+ </html>
+
+ <!--------------------------------------->
+
+   

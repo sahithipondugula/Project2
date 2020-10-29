@@ -1,0 +1,21 @@
+.dropdown{
+    
+    padding-left: 40px;
+    padding-top: 100px;
+    color: whitesmoke;
+}
+.btn{
+    color: black;
+    background-color: whitesmoke;
+}
+.buttons{
+    float:right;
+    
+}
+.btn{
+    background-color: white;
+}
+.btn:hover{
+    color:white;
+background-color: black
+}

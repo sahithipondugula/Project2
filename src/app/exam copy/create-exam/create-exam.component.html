@@ -1,0 +1,173 @@
+<div class="container">
+  <a routerLink="/clientinfo" class="previous" style="color: white;"><span aria-hidden="true">&larr;</span>
+    Back</a>
+    <div class="examData">
+      <form name="form" (ngSubmit)="exam.form.valid && onSubmit()" #exam="ngForm">
+        <button type="submit" id="buttons" class="btn btn-outline-success" data-dismiss="modal" *ngIf="buttons">Save</button>
+        <button type="reset" id="buttons" class="btn btn-outline-danger"  *ngIf="buttons">Cancel</button>
+        <!-- <button type="button" id="buttons" routerLink="/adminhome" *ngIf="!buttons">Back</button> -->
+      <div class="form-row">
+        <div class="form-group col-6">
+          <label class="label" for="examId">Exam ID</label>
+          <input type="text" class="form-control" id="examId" name="examId" required
+            [(ngModel)]="newExam.examId" #examId="ngModel"
+            [ngClass]="{ 'is-invalid': exam.submitted && examId.invalid}">
+          <div *ngIf="exam.submitted && examId.invalid" class="invalid-feedback">
+            <div *ngIf="examId.errors.required">required**</div>
+          </div>
+        </div>
+        <div class="form-group col-6">
+          <label class="label" for="examName">Exam Name</label>
+          <input type="text" class="form-control" id="examName" name="examName" required
+            [(ngModel)]="newExam.examName" #examName="ngModel"
+            [ngClass]="{ 'is-invalid': exam.submitted && examName.invalid}">
+          <div *ngIf="exam.submitted && examName.invalid" class="invalid-feedback">
+            <div *ngIf="examName.errors.required">required**</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="label" for="examDescription">Exam Description</label>
+        <textarea class="form-control" id="examDescription" name="examDescription"
+          [(ngModel)]="newExam.examDescription" required #examDescription="ngModel"
+          [ngClass]="{ 'is-invalid': exam.submitted && examDescription.invalid}"></textarea>
+        <div *ngIf="exam.submitted && examDescription.invalid" class="invalid-feedback">
+          <div *ngIf="examDescription.errors.required">Please enter valid data</div>
+        </div>
+      </div>
+    </form>
+    </div>
+    <div>
+      <button class="btn btn-outline-dark" type="button"*ngIf="showAddButton" (click)="displayTable()">View Questions</button>
+    </div>
+    
+        <button class="btn btn-outline-dark"  id="addquestion" data-toggle="modal" data-target="#myModal" *ngIf="showAddButton">Add a
+          Question</button>
+          <div *ngIf="showTable">
+        <div class="table-responsive">
+          <table class="table ">
+            <thead>
+              <tr>
+                <th scope="col">Qn No</th>
+                <th scope="col">Question</th>
+                <th scope="col">Option A</th>
+                <th scope="col">Option B</th>
+                <th scope="col">Option C</th>
+                <th scope="col">Option D</th>
+                <th scope="col">Correct Options</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor = "let question of clientDataById.exam.questions;let i=index">
+      
+                <td >{{i+1}}</td>
+                <td>{{question.question}}</td>
+                <td>{{question.optionA}}</td>
+                <td>{{question.optionB}}</td>
+                <td>{{question.optionC}}</td>
+                <td>{{question.optionD}}</td>
+                <td>{{question.answer}}</td>
+                
+              </tr>
+            
+            </tbody>
+          </table>
+        </div>
+      </div>
+      </div>
+
+       <!-- Add qn Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Add new Question</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+  
+        </div>
+        <div class="modal-body">
+          <div class="bs-example">
+            <form name="form" (ngSubmit)="addQn.form.valid && onAddQuestion()" #addQn="ngForm">
+              <div class="questions">
+  
+  
+                <div class="form-group">
+                  <label class="label" for="question">Question</label>
+                  <textarea class="form-control" id="question" placeholder="problem statement briefly" name="question"
+                    [(ngModel)]="newQuestion.question" required #question="ngModel"
+                    [ngClass]="{ 'is-invalid': addQn.submitted && question.invalid}"></textarea>
+                  <div *ngIf="addQn.submitted && question.invalid" class="invalid-feedback">
+                    <div *ngIf="question.errors.required">Please enter valid Question</div>
+                  </div>
+                </div>
+  
+                <div class="form-row">
+                  <div class="form-group col-6">
+                    <label class="label" for="opA">Option A</label>
+                    <input type="text" class="form-control" id="opA" name="optionA" required
+                      [(ngModel)]="newQuestion.optionA" #optionA="ngModel"
+                      [ngClass]="{ 'is-invalid': addQn.submitted && optionA.invalid}">
+                    <div *ngIf="addQn.submitted && optionA.invalid" class="invalid-feedback">
+                      <div *ngIf="optionA.errors.required">required**</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-6">
+  
+                    <label class="label" for="opB">Option B</label>
+                    <input type="text" class="form-control" id="opB" name="optionB" required
+                      [(ngModel)]="newQuestion.optionB" #optionB="ngModel"
+                      [ngClass]="{ 'is-invalid': addQn.submitted && optionB.invalid}">
+                    <div *ngIf="addQn.submitted && optionB.invalid" class="invalid-feedback">
+                      <div *ngIf="optionB.errors.required">required**</div>
+                    </div>
+  
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-6">
+                    <label class="label" for="opC">Option C</label>
+                    <input type="text" class="form-control" id="opC" name="optionC" required
+                      [(ngModel)]="newQuestion.optionC" #optionC="ngModel"
+                      [ngClass]="{ 'is-invalid': addQn.submitted && optionC.invalid}">
+                    <div *ngIf="addQn.submitted && optionC.invalid" class="invalid-feedback">
+                      <div *ngIf="optionC.errors.required">required**</div>
+                    </div>
+  
+                  </div>
+                  <div class="form-group col-6">
+  
+                    <label class="label" for="opD">Option D</label>
+                    <input type="text" class="form-control" id="opD" name="optionD" required
+                      [(ngModel)]="newQuestion.optionD" #optionD="ngModel"
+                      [ngClass]="{ 'is-invalid': addQn.submitted && optionD.invalid}">
+                    <div *ngIf="addQn.submitted && optionD.invalid" class="invalid-feedback">
+                      <div *ngIf="optionD.errors.required">required**</div>
+                    </div>
+  
+                  </div>
+                </div>
+                <div>
+  
+                  <label class="label" for="ANS">Correct Options</label>
+                  <input type="text" class="form-control" id="ANS" name="answer" required [(ngModel)]="newQuestion.answer"
+                    #answer="ngModel" [ngClass]="{ 'is-invalid': addQn.submitted && answer.invalid}">
+                  <div *ngIf="addQn.submitted && answer.invalid" class="invalid-feedback">
+                    <div *ngIf="answer.errors.required">required and no special characters allowed**</div>
+                  </div>
+  
+                </div>
+  
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-outline-success">Save</button>
+                  <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

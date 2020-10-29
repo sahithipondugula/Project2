@@ -1,0 +1,217 @@
+<!-- modal way -->
+
+
+<div class="container">
+
+    <!-- Trigger the modal with a button -->
+
+    <form>
+        <nav aria-label="pager">
+
+            <a routerLink="/clientinfo" class="previous" style="color: white;"><span aria-hidden="true">&larr;</span>
+                Back</a>
+            <!-- <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li> -->
+
+        </nav>
+        <div class="form-row">
+            <div class="dropdown form-group">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    (click)="getAllProjectsOfClient()" aria-haspopup="true" aria-expanded="false">
+                    Select Project
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" data-toggle="modal" data-target="#myModal"
+                        *ngFor="let project of clientDataById.project"
+                        (click)="getProjectById(project.projectId)">{{project.name}}</a>
+
+                </div>
+            </div>
+            <div class="form-group" style="margin-left:20px;">
+                <button class="btn btn-info" routerLink="/newproject">Add new Project</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Projects & Technologies</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="bs-example">
+                        <form name="form" (ngSubmit)="p.form.valid && onSubmitProject()" #p="ngForm">
+                            <div class="projects">
+                                <div class="form-group">
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label class="label" for="projectId">Project ID</label>
+                                            <input type="text" class="form-control" id="projectId"
+                                                [(ngModel)]="selectedProject.projectId" name="projectId" required
+                                                #projectId="ngModel"
+                                                [ngClass]="{ 'is-invalid': p.submitted && projectId.invalid }">
+                                            <div *ngIf="p.submitted && projectId.invalid"
+                                                class="invalid-feedback">
+                                                <div *ngIf="p.errors.required">ID is required*</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label class="label" for="projectName">Project Name</label>
+                                            <input type="text" class="form-control" id="projectName"
+                                                [(ngModel)]="selectedProject.name" name="name" required
+                                                #name="ngModel"
+                                                [ngClass]="{ 'is-invalid': p.submitted && name.invalid }">
+                                            <div *ngIf="p.submitted && name.invalid"
+                                                class="invalid-feedback">
+                                                <div *ngIf="p.errors.required">Name is required*</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="label" for="projectName">About Project</label>
+                                        <textarea class="form-control" id="projectintro"
+                                            [(ngModel)]="selectedProject.projectDescription" rows="3"
+                                            name="projectDescription" required
+                                            #projectDescription="ngModel"
+                                            [ngClass]="{ 'is-invalid': p.submitted && projectDescription.invalid }"></textarea>
+                                            <div *ngIf="p.submitted && projectDescription.invalid"
+                                            class="invalid-feedback">
+                                            <div *ngIf="p.errors.required">Please fill the Data*</div>
+                                        </div>
+                                        </div>
+                                    <div class="form-group">
+                                        <label class="label" for="status">Status</label>
+                                        <input class="form-control" id="status" [(ngModel)]="selectedProject.active"
+                                            name="active" required
+                                            #active="ngModel"
+                                            [ngClass]="{ 'is-invalid': p.submitted && active.invalid }">
+                                        <div *ngIf="p.submitted && active.invalid"
+                                            class="invalid-feedback">
+                                            <div *ngIf="p.errors.required">Please enter "1" or "0"</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <button type="button" id="technologiesUsed" class="btn btn-info"
+                                                (click)="displayTechnologies()">Technologies
+                                                Used</button></div>
+                                        <div class="form-group">
+                                            <button type="button" id="technologiesUsed" class="btn btn-info"
+                                                (click)="addTechnologyToProject()">Add Technology to Project</button>
+                                        </div>
+                                    </div>
+
+                                    <div *ngIf="showAddTechnology">
+                                        <div class="form-row">
+                                            <div class="form-group">
+                                                <div class="dropdown form-group">
+                                                    <button class="btn dropdown-toggle" type="button"
+                                                        id="dropdownMenuButton" data-toggle="dropdown"
+                                                        (click)="getAllTechnologies()" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        Add Technology to Project
+                                                    </button>
+
+                                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item"
+                                                            *ngFor="let technology of allTechnologies"
+                                                            (click)="addtoProject(technology.technologyId)">{{technology.technologyName}}</a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn" type="button" id="dropdownMenuButton"
+                                                    (click)="displayAddTechnology()" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    Didn't find technology?Add here!
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="addTechnology">
+                                        <form name="form" (ngSubmit)="t.form.valid && onSubmitNewTechnology()" #t="ngForm">
+                                            <div class="newTechnology">
+                                                <div class="form-row">
+
+                                                    <div class="form-group col-md-6">
+                                                        <label class="label" for="technologyId">Technology ID</label>
+                                                        <input type="text" class="form-control" id="technologyId"
+                                                            required [(ngModel)]="newTechnology.technologyId"
+                                                            name="technologyId" #technologyId="ngModel"
+                                                            [ngClass]="{ 'is-invalid': t.submitted && technologyId.invalid }">
+                                                        <div *ngIf="t.submitted && technologyId.invalid"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="t.errors.required">required*</div>
+                                                        </div>
+                                                    </div>
+                                                
+                                                    <div class="form-group col-md-6">
+                                                        <label class="label" for="technologyName">Technology
+                                                            Name</label>
+                                                        <input type="text" class="form-control" id="technologyName"
+                                                            required [(ngModel)]="newTechnology.technologyName"
+                                                            name="technologyName" #technologyName="ngModel"
+                                                            [ngClass]="{ 'is-invalid': t.submitted && technologyName.invalid }">
+                                                        <div *ngIf="t.submitted && technologyName.invalid"
+                                                            class="invalid-feedback">
+                                                            <div *ngIf="t.errors.required">required*</div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="label" for="technologyDescription">Description of
+                                                        Technology</label>
+                                                    <textarea class="form-control" id="technologyDescription" required
+                                                        [(ngModel)]="newTechnology.technologyDescription"
+                                                        name="technologyDescription"
+                                                        #technologyDescription="ngModel"
+                                                        [ngClass]="{ 'is-invalid': t.submitted && technologyDescription.invalid }"></textarea>
+                                                        <div *ngIf="t.submitted && technologyDescription.invalid"
+                                                        class="invalid-feedback">
+                                                        <div *ngIf="t.errors.required">required*</div>
+                                                    </div>
+                                                    </div>
+                                                <button type="submit" class="btn btn-success">Submit</button>
+                                                <button type="button" class="btn btn-danger">Cancel</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                    <div *ngIf="showTechnologies">
+
+                                        <div class="showTechnologies"
+                                            *ngFor="let technology of selectedProject.technologies">
+                                            <div class="row">
+                                                <div class="col-sm-8" id="techName">{{technology.technologyName}}</div>
+                                                <div class="col-sm-4"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-outline-success" >Save Page</button>
+                                <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

@@ -1,0 +1,28 @@
+
+.row{
+  background: url('https://3.bp.blogspot.com/-3vLsuHApBVE/V-KWrzRyhdI/AAAAAAAAC8s/dPkukqRowAQfGx8aCvU2LlsyWIoNJyAvQCEw/s1600/harvard%2Buniversity%2BHD%2Bwallpaper%2B1.jpg') no-repeat center center/cover;; 
+    padding-right:3cm;
+    padding-left:3cm;
+align-items: center;
+    position: relative;
+    margin: 0;
+    /* padding: 0; */
+  width: 100%;
+  height: 100%;
+  /* border:black;
+  border-style: solid; */
+   
+}
+
+.encyclopedia{
+      padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 30px;
+    padding-right: 30px;
+    /* background: url("https://www.fonewalls.com/wp-content/uploads/Amber-Orange-Solid-Color-Background-Wallpaper-for-Mobile-Phone-300x533.png") no-repeat center center/cover; */
+    /* background-color: rgb(26, 22, 22); */
+    background-color: rgb(138, 3, 3);
+  opacity: 0.8;
+  border-radius: 30px; 
+  
+}

@@ -1,0 +1,35 @@
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <!-- rgb(255, 123, 0); -->
+<mat-toolbar class="" style="background-color:maroon ;height: 80px;padding-top:5px;padding-bottom: 5px;">
+    <span><img src="../assets/logo2.png" style="width: 50px; height: 50px; font-size: 35px; color:black; margin-left: 10px;"><a class="brand" routerLink="/main">MUniversity</a></span>
+<div class="spacer"></div>
+<a mat-button style="color: white;" routerLink="/about">About</a>
+<a mat-button style="color: white;" routerLink="/events">Events</a>
+<a mat-button style="color: white;" routerLink="/casestudy">Case Studies</a>
+<a mat-button style="color: white;" routerLink="/project">Projects</a>
+<a mat-button style="color: white;" routerLink="/culture">Culture</a>
+<a mat-button style="color: white;" routerLink="/eyclo">Encyclopedia</a>
+<a mat-button style="color: white;" routerLink="/taketest">Exam</a>
+<a href="#about5" style="color: white;" mat-button routerLink="/contact">Contact</a>
+<span routerLink="/logout" style="color: white;" class="glyphicon">&#xe163;</span>
+</mat-toolbar>
+
+
+<!-- 
+<section id="about">
+  <h1 style="color:black">about</h1>
+    <app-about></app-about>
+    </section> 
+
+<section id="about5">
+  <h1 style="color:black">Contact</h1>
+    
+    </section>  -->
+    <!-- <app-mainpage></app-mainpage> -->
+           <router-outlet></router-outlet>

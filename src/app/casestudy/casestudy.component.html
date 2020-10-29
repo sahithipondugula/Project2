@@ -1,0 +1,86 @@
+
+  <head>
+      <!-- <link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
+         
+      <link rel="icon" type="image/x-icon" href="favicon.ico">
+      <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+              integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
+          <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" /> -->
+         <!---------------bootstrap 4.5-->
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+          <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <!-----------ppt -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.3.1/libs/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.3.1/dist/pptxgen.min.js"></script>
+<script src="PptxGenJS/libs/jszip.min.js"></script>
+<script src="PptxGenJS/dist/pptxgen.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.3.1/dist/pptxgen.bundle.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.3.1/libs/jszip.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/pptxgenjs@3.3.1/dist/pptxgen.min"></script>
+ </head>
+ <app-navbar></app-navbar>
+ <body style="width: 100%; height:100%; padding-left: 2cm; padding-right: 2cm; padding-bottom: 1%; padding-top: 1cm;
+ background: url('https://s.abcnews.com/images/US/ucla-campus-gty-jc-200421_hpMain_2_16x9_1600.jpg') no-repeat center center/cover;">
+  <!-- 
+    <div class="c" *ngFor="let tt of modules ">
+    <div class="card w-75">
+      <div class="card-body">
+
+        <p>
+         {{tt.CaseStudy}}
+           </p>
+           <hr>
+           <p>
+            Start Date:{{tt.CaseStudydate | customDate}}
+              </p>
+<p>Description</p>
+           <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+            the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.Some quick example text to build on the card title and make up the bulk of the card's content.
+           Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        
+           <button  class="btn btn-success" (click)="looping()">Download Case Study
+           </button>
+
+    </div>
+  </div>
+  </div> -->
+
+  <ng-container *ngFor="let item of items; let i = index"><br>
+    <div class="card">     <div class="card-body" style="font-size: 20px; text-align: left;
+      color: black;width: 75%; height:5cm; ">  {{ item.CaseStudyid}}<br>
+     From Date{{ item.Description }}  <br/>
+
+ <button  class="btn btn-success" (click)="looping(item.CaseStudyid)">Download Case Study</button>
+  <!----  </button> -->
+    <!-- <button type="button" style="font-size: 20px; text-align: left;
+    color: black;width: 75%; height:4cm; background-color: cornsilk;" class="btn btn-primary" (click)="isCollapsed=i">
+    {{ item.CaseStudyid}}<br>
+     From Date{{ item.Description }}  <br/> -->
+     <!-- viewModal(item.project_id) -->
+    <!-- <button  class="btn btn-success" (click)="looping(item.CaseStudyid)">Download Case Study</button>
+    </button> -->
+    <br><br>
+    <!-- <hr> -->
+    <!-- <div [id]="'collapseViewMore-' + index" [collapse]="i!==isCollapsed" class="card card-block card-header">
+      <div class="well well-lg" style="font-size: 20px; color: black;">
+        <table>
+          <tr>{{ item.CaseStudyid }}</tr><br>
+         <tr>{{ item.  Description }} </tr>
+        
+         
+        </table>
+         </div>
+    </div> -->
+  </div></div>
+    </ng-container>
+
+</body>
+

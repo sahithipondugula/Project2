@@ -1,0 +1,39 @@
+.container{
+    padding-top: 80px;
+    margin-left: 20px;
+    padding-left: 0;
+
+}
+#dropdownMenuButton{
+    margin-left: 50px;
+}
+.btn{
+    background-color: white;
+    border-radius: 30px;
+    margin-top: 50px;
+    color: black;
+}
+.previous{
+    font-size: 30px;
+    color: white;
+}
+.btn:hover{
+color: black;
+transform: scale(1.1);
+}
+.dropdown-item:hover{
+    background-color:cornflowerblue;
+
+}
+#technologiesUsed{
+background-color:darkcyan;
+}
+.fa:hover{
+color:rgb(7, 7, 112);
+}
+.showTechnologies{
+    padding-top: 20px;
+}
+.fa{
+    color: red;
+}

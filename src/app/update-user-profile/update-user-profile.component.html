@@ -1,0 +1,209 @@
+<div class="container">
+    <a routerLink="/" class="previous" style="color: white;"><span aria-hidden="true">&larr;</span>
+        Back</a><br><br>
+    <div class="div-container">
+        
+        
+            <div class="form-row">
+                <!-- <label class="label" for="admin">Select Employee </label> -->
+                <!-- <select class="admin" (change)="selectChangeHandlerForAdmins($event)">
+
+                <option value={{employee.empAutoId}} *ngFor="let employee of listOfEmployeesBasedOnRole">
+                    {{employee.email}}</option>
+            </select> -->
+            <p class="label">Select Employee : </p><button class="btn dropdown-toggle" type="button" id="dropdowns" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                   {{selectedEmail}}
+                </button>
+                <div class="dropdown-menu" id="universities" aria-labelledby="role">
+                    <a class="dropdown-item" *ngFor="let employee of listOfEmployeesBasedOnRole"
+                        (click)="selectChangeHandlerForAdmins(employee.empAutoId,employee.email)">
+                        {{employee.email}}</a>
+                </div>
+
+            </div>
+        
+        <div class="employeeDetails" *ngIf="showDetails">
+            <form name="form" (ngSubmit)="addUser.form.valid && onSubmit()" #addUser="ngForm">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="label" for="EmployeeId">Employee ID</label>
+                        <input type="text" class="form-control" id="EmployeeId" required
+                            [(ngModel)]="selectedEmployee.employeeId" name="employeeId" #employeeId="ngModel" readonly
+                            [ngClass]="{ 'is-invalid': addUser.submitted && employeeId.invalid }">
+
+                        <div *ngIf="addUser.submitted && employeeId.invalid" class="invalid-feedback">
+                            <div *ngIf="employeeId.errors.required">ID is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="label" for="active">Status</label>
+                        <input type="text" class="form-control" id="active" required
+                            [(ngModel)]="selectedEmployee.active" name="active" #active="ngModel"
+                            [ngClass]="{ 'is-invalid': addUser.submitted && active.invalid }">
+
+                        <div *ngIf="addUser.submitted && active.invalid" class="invalid-feedback">
+                            <div *ngIf="active.errors.required">required**</div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="label" for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" required
+                            [(ngModel)]="selectedEmployee.firstName" name="firstName" #firstName="ngModel" readonly
+                            [ngClass]="{ 'is-invalid': addUser.submitted && firstName.invalid }">
+
+                        <div *ngIf="addUser.submitted && firstName.invalid" class="invalid-feedback">
+                            <div *ngIf="firstName.errors.required">required**</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="label" for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" required
+                            [(ngModel)]="selectedEmployee.lastName" name="lastName" #lastName="ngModel" readonly
+                            [ngClass]="{ 'is-invalid': addUser.submitted && lastName.invalid }">
+
+                        <div *ngIf="addUser.submitted && lastName.invalid" class="invalid-feedback">
+                            <div *ngIf="lastName.errors.required">required**</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label class="label" for="email">Email</label>
+                        <input type="email" class="form-control" id="email" required
+                            [(ngModel)]="selectedEmployee.email" name="email" #email="ngModel"
+                            [ngClass]="{ 'is-invalid': addUser.submitted && email.invalid }" readonly>
+
+                        <div *ngIf="addUser.submitted && email.invalid" class="invalid-feedback">
+                            <div *ngIf="email.errors.required">required**</div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="label" for="mobile">Mobile</label>
+                        <input type="text" class="form-control" id="mobile" required
+                            [(ngModel)]="selectedEmployee.mobile" name="mobile" #mobile="ngModel"
+                            [ngClass]="{ 'is-invalid': addUser.submitted && mobile.invalid }" readonly>
+
+                        <div *ngIf="addUser.submitted && mobile.invalid" class="invalid-feedback">
+                            <div *ngIf="mobile.errors.required">required**</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row" >
+                   
+                
+                   <p class="label"> Role : </p><button class="btn dropdown-toggle" type="button" id="dropdowns" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                           {{selectedRoleToUpdate}}
+                        </button>
+                        <div class="dropdown-menu" id="universities" aria-labelledby="role">
+                            <a class="dropdown-item" *ngFor="let role of roles " (click)="getSelectedRole(role)">
+                                {{role}}</a>
+                        </div>
+                    
+                </div>
+                <br>
+                <br>
+                <div class="form-row">
+                    <div class="form-group ">
+                        <button type="button" class="btn btn-outline-primary"
+                            (click)="getPermissions()">Permissions</button>
+                    </div>
+                    <div class="form-group " *ngIf="displayPermissionsTable">
+                        <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                            data-target="#myModal">Update
+                            Permissions</button>
+                    </div>
+                </div>
+
+                <div class="form-row" *ngIf="displayPermissionsTable">
+
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Permissions</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let permission of allPermissions">
+                                <td>{{permission.permission}}</td>
+                                <td><button (click)="deleteSelectedPermissions(permission.pmsAutoId)">Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="submit" class="btn btn-outline-success">Save</button>
+                <button type="reset" class="btn btn-outline-danger">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Permissions</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+            </div>
+            <div class="modal-body">
+
+                <form name="form" (ngSubmit)="p.form.valid && onSubmitNewPermissions()" #p="ngForm">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{typeOfPermissions}}
+                            </button>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" *ngFor="let type of permissionTypes"
+                                    (click)="selectedType(type)">{{type}}</a>
+
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6" *ngIf="secondDropdown">
+                            <button type="button" class="btn dropdown-toggle" id="navbarDropdownMenuLink"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                -Select Permissions-
+                            </button>
+                            <div class="dropdown-menu" id="universities" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item"
+                                    *ngFor="let list of dropdownPermissionsToBeDisplayedForSelecting "
+                                    (click)="getselectedPermission(list.pmsAutoId)"> {{list.permission}}</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div *ngIf="showNewPermissions">
+
+                        <div class="showNewPermissions"
+                            *ngFor="let permission of selectedPermissionBeforeAddingToTable">
+                            <div class="row">
+                                <div class="col-sm-8" id="techName">{{permission.permission}}</div>
+                                <div class="col-sm-4"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-success">Save</button>
+                        <button type="button" class="btn btn-outline-danger" (click)="resetPopup()">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,94 @@
+/* .row{
+  margin: 0;
+   padding:0;
+   
+   /* padding-left: 4cm; */
+  /* align-items: center; */
+    /* position: relative;
+   justify-items : center; */
+   
+    /* padding:90px 90px 90px; */
+/*
+.card{
+  position: relative;display:block; 
+ text-align: center;
+  height:100%;
+  width:  70%;
+  padding-top: 10px;
+}
+.card-title{
+  font-size: 18px;
+}
+.btn btn-primary{
+  font-size: 14px;
+} */
+/* .row{
+    width:100%;
+    height: 100%;
+    position: relative;
+    padding:90px 90px 90px;
+  
+}
+.card-header{
+    font-size: 25px;
+    color: black;
+}*/
+
+    /* color: white;
+
+    padding-right:3cm;
+    padding-left:3cm;
+align-items: center;
+    position: relative;
+    margin: 0;
+    /* padding: 0; */
+ /* width: 100%;
+  height: 100%;
+  
+  
+}
+
+.card{
+
+ font-size: 20px;
+ color: black;
+}
+.card-title{
+  font-size: 20px;
+ color: black;
+}
+.card-text{
+  font-size: 18px;
+  color: black;
+}
+.card-header{
+  font-size: 30 px;
+ color: black;
+}
+
+/* /* .tt{
+    padding-right: 10cm;
+    align-items: center;padding-left: 10cm;
+    padding-top: 5cm;
+} */
+
+.modal.show{
+  display: block;
+
+}
+.modal-body{
+  width: 100%;
+  height:100%;
+}
+.radio{
+    padding:1px 1px 1px;
+   display: inline-block;
+}
+.container{
+    width: 100%;
+    height:100%;
+} 
+.modal-title{
+  color: black;
+  font-size: 15px;
+}

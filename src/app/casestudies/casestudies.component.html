@@ -1,0 +1,191 @@
+<!-- modal way -->
+
+
+<div class="container">
+
+    <!-- Trigger the modal with a button -->
+
+    <form>
+        <nav aria-label="pager">
+
+            <a routerLink="/clientinfo" class="previous" style="color: white;font-size: 30px;"><span
+                    aria-hidden="true">&larr;</span> Back</a>
+            <!-- <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li> -->
+
+        </nav>
+        <div class="form-row">
+            <div class="dropdown form-group ">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    (click)="getClientById()" aria-haspopup="true" aria-expanded="false">
+                    Select Case Study
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" data-toggle="modal" data-target="#myModal"
+                        *ngFor="let casestudy of clientDataById.caseStudy"
+                        (click)="getSelectedCaseStudy(casestudy.casestudyId)">{{casestudy.casestudyName}}</a>
+                </div>
+            </div>
+            <div class="form-group" style="margin-left:20px;">
+                <button class="btn btn-info" routerLink="/addnewcasestudy">Add new Case Study</button>
+            </div>
+        </div>
+    </form>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Case Study</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="bs-example">
+                        <form name="form" (ngSubmit)="cs.form.valid && onSubmit()" #cs="ngForm">
+                            <div class="projects">
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <label class="label" for="csId">Case Study ID</label>
+                                        <input type="text" class="form-control" id="csId" name="casestudyId"
+                                            [(ngModel)]="selectedCaseStudy.casestudyId" #casestudyId="ngModel" required
+                                            [ngClass]="{ 'is-invalid': cs.submitted && casestudyId.invalid }">
+
+                                        <div *ngIf="cs.submitted && casestudyId.invalid"
+                                            class="invalid-feedback">
+                                            <div *ngIf="casestudyId.errors.required">ID is required</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="label" for="name">Case Study Name</label>
+                                        <input type="text" class="form-control" id="name" name="casestudyName"
+                                            [(ngModel)]="selectedCaseStudy.casestudyName" #casestudyName="ngModel" required
+                                            [ngClass]="{ 'is-invalid': cs.submitted && casestudyName.invalid }">
+
+                                            <div *ngIf="cs.submitted && casestudyName.invalid"
+                                                class="invalid-feedback">
+                                                <div *ngIf="casestudyName.errors.required">Case Study Name is required</div>
+                                            </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="label" for="startDate">Start Date</label>
+                                        <input type="text" class="form-control" id="startDate" name="startDate"
+                                            [(ngModel)]="selectedCaseStudy.startDate"  #startDate="ngModel" required
+                                            [ngClass]="{ 'is-invalid': cs.submitted && startDate.invalid }">
+
+                                            <div *ngIf="cs.submitted && startDate.invalid"
+                                                class="invalid-feedback">
+                                                <div *ngIf="startDate.errors.required">Please enter Start Date</div>
+                                            </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="label" for="endDate">End Date</label>
+                                        <input type="text" class="form-control" id="endDate" name="endDate"
+                                            [(ngModel)]="selectedCaseStudy.endDate"  #endDate="ngModel" required
+                                            [ngClass]="{ 'is-invalid': cs.submitted && endDate.invalid }">
+
+                                            <div *ngIf="cs.submitted && endDate.invalid"
+                                                class="invalid-feedback">
+                                                <div *ngIf="endDate.errors.required">Please enter End Date</div>
+                                            </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="label" for="problemstatement">Problem statement</label>
+                                    <textarea class="form-control" id="problemStatement"
+                                        placeholder="problem statement briefly" name="problemStatement"
+                                        [(ngModel)]="selectedCaseStudy.problemStatement" #problemStatement="ngModel" required
+                                        [ngClass]="{ 'is-invalid': cs.submitted && problemStatement.invalid }"></textarea>
+                                        <div *ngIf="cs.submitted && problemStatement.invalid"
+                                        class="invalid-feedback">
+                                        <div *ngIf="problemStatement.errors.required">Please fill Data</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label" for="explanationPs">Description of Problem statement</label>
+                                    <textarea class="form-control" id="explanationPs"
+                                        placeholder="problem statement description" name="explanationPs"
+                                        [(ngModel)]="selectedCaseStudy.explanationPs" #explanationPs="ngModel" required
+                                        [ngClass]="{ 'is-invalid': cs.submitted && explanationPs.invalid }"></textarea>
+                                        <div *ngIf="cs.submitted && explanationPs.invalid"
+                                        class="invalid-feedback">
+                                        <div *ngIf="explanationPs.errors.required">Please fill Data</div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <h3>Solution</h3>
+                                <hr>
+                                <div class="form-group">
+                                    <label class="label" for="tools">Tools used</label>
+                                    <textarea class="form-control" id="tools"
+                                        placeholder="Tools used to solve problem statement" name="solution"
+                                        [(ngModel)]="selectedCaseStudy.solution" #solution="ngModel" required
+                                        [ngClass]="{ 'is-invalid': cs.submitted && solution.invalid }"></textarea>
+                                        <div *ngIf="cs.submitted && solution.invalid"
+                                        class="invalid-feedback">
+                                        <div *ngIf="solution.errors.required">Please fill Data</div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label" for="data">Data</label>
+                                    <textarea class="form-control" id="data"
+                                        placeholder="Data that qualifies problem statement" name="data"
+                                        [(ngModel)]="selectedCaseStudy.data" #data="ngModel" required
+                                        [ngClass]="{ 'is-invalid': cs.submitted && data.invalid }"></textarea>
+                                        <div *ngIf="cs.submitted && data.invalid"
+                                        class="invalid-feedback">
+                                        <div *ngIf="data.errors.required">Please fill Data</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label class="label" for="resolvedBy">Resolved by</label>
+                                        <input type="text" class="form-control" id="resolvedBy" name="doneBy"
+                                            [(ngModel)]="selectedCaseStudy.doneBy" #doneBy="ngModel" required
+                                            [ngClass]="{ 'is-invalid': cs.submitted && doneBy.invalid }">
+                                            <div *ngIf="cs.submitted && doneBy.invalid"
+                                            class="invalid-feedback">
+                                            <div *ngIf="doneBy.errors.required">*required</div>
+                                        </div>
+                                        </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="label" for="active">Active</label>
+                                        <input type="number" class="form-control" id="active" name="active"
+                                            [(ngModel)]="selectedCaseStudy.active" #active="ngModel" required
+                                            [ngClass]="{ 'is-invalid': cs.submitted && active.invalid }">
+                                            <div *ngIf="cs.submitted && active.invalid"
+                                            class="invalid-feedback">
+                                            <div *ngIf="active.errors.required">*required</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-outline-success">Save Page</button>
+                                <button type="button" class="btn btn-outline-danger"
+                                    data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>

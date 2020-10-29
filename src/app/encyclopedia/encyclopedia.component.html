@@ -1,0 +1,93 @@
+<!-- modal way -->
+
+
+<div class="container">
+
+    <!-- Trigger the modal with a button -->
+
+    <form>
+        <nav aria-label="pager">
+           
+            <a routerLink="/clientinfo" class="previous" style="color: white;font-size: 30px;"><span aria-hidden="true">&larr;</span> Back</a>
+            <!-- <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li> -->
+        
+        </nav>
+        <div class="form-row">
+            <div class="dropdown form-group ">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                   (click)="getClientById()" aria-haspopup="true" aria-expanded="false">
+                    Encyclopedia List
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" data-toggle="modal" data-target="#myModal"
+                        *ngFor="let eachEncyclo of clientDataById.encyclopedia"
+                        (click)="getSelectedEncyclopedia(eachEncyclo.encyclopedia_id)">{{eachEncyclo.encyclopedia_id}}</a>
+                </div>
+            </div>
+            <div class="form-group" style="margin-left:20px;">
+                <button class="btn btn-info" routerLink="/addEncyclopedia">Add new data</button>
+            </div>
+        </div>
+    </form>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Encyclopedia</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="bs-example">
+                        <form>
+                            <div class="projects">
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-6">
+                                        <label class="label" for="encycloId">Encyclopedia ID</label>
+                                        <input type="text" class="form-control" id="encycloId"
+                                            name="encyclopedia_id"
+                                            [(ngModel)]="selectedEncyclopedia.encyclopedia_id">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label class="label" for="active">Status</label>
+                                        <input type="text" class="form-control" id="active"
+                                            name="active"
+                                            [(ngModel)]="selectedEncyclopedia.active">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="label" for="encyclopediaData">Encyclopedia Data</label>
+                                    <textarea class="form-control" id="encyclopediaData"
+                                        name="about"
+                                        [(ngModel)]="selectedEncyclopedia.about"></textarea>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-outline-danger" style="float:left;" (click)="deleteCaseStudy()">Delete
+                        Case study
+                    </button> -->
+                    <button type="button" class="btn btn-outline-success"  (click)="updateEncyclopedia(selectedEncyclopedia)" data-dismiss="modal">Save Page</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>

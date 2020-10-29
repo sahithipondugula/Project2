@@ -1,0 +1,124 @@
+<div class="container">
+    <a routerLink="/encyclopedia" class="previous" style="color: white;font-size: 30px;"><span
+        aria-hidden="true">&larr;</span> Back</a>
+    <div class="div-container>">
+    <form name="form" (ngSubmit)="addEvent.form.valid && onSubmit()" #addEvent="ngForm">
+        <div class="form-row">
+            <a routerLink="/clientinfo" class="previous" style="color: white;font-size: 20px;"><span
+                aria-hidden="true">&larr;</span> Back</a>
+            <div class="form-group col-md-6">
+
+                <label class="label" for="eventId">Event ID</label>
+                <input type="text" class="form-control" id="eventId" placeholder="Enter Event ID" name="eventId"
+                    [(ngModel)]="newEvent.eventId" required #eventId="ngModel"
+                    [ngClass]="{ 'is-invalid': addEvent.submitted && eventId.invalid }">
+                <div *ngIf="addEvent.submitted && eventId.invalid" class="invalid-feedback">
+                    <div *ngIf="eventId.errors.required">ID is required*</div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="label" for="eventName">Event Name</label>
+                <input type="text" class="form-control" id="eventName" placeholder="Enter Event Name" name="eventName"
+                    [(ngModel)]="newEvent.eventName" required #eventName="ngModel"
+                    [ngClass]="{ 'is-invalid': addEvent.submitted && eventName.invalid }">
+                <div *ngIf="addEvent.submitted && eventName.invalid" class="invalid-feedback">
+                    <div *ngIf="eventName.errors.required">Name is required*</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="label" for="place">Place</label>
+                <input type="text" class="form-control" id="place" placeholder="Enter place" name="place"
+                    [(ngModel)]="newEvent.place" required #place="ngModel"
+                    [ngClass]="{ 'is-invalid': addEvent.submitted && place.invalid }">
+                <div *ngIf="addEvent.submitted && place.invalid" class="invalid-feedback">
+                    <div *ngIf="place.errors.required">Event Place is required*</div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="label" for="date">Date of Event</label>
+                <input type="Date" class="form-control" id="date" name="date" [(ngModel)]="newEvent.date"
+                    required #date="ngModel" [ngClass]="{ 'is-invalid': addEvent.submitted && date.invalid }">
+                <div *ngIf="addEvent.submitted && date.invalid" class="invalid-feedback">
+                    <div *ngIf="date.errors.required">Event Place is required*</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="label" for="status">Status</label>
+                <input type="text" class="form-control" id="status"  name="active"
+                    [(ngModel)]="newEvent.active" required #active="ngModel"
+                    [ngClass]="{ 'is-invalid': addEvent.submitted && active.invalid }">
+                <div *ngIf="addEvent.submitted && active.invalid" class="invalid-feedback">
+                    <div *ngIf="active.errors.required">Event Place is required*</div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="label" for="university">University Name</label>
+                <input type="text" class="form-control" id="university" value="{{clientDataById.name}}" 
+                    readonly>
+               
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="label" for="eventDes">Description of Event</label>
+            <textarea type="text" class="form-control" id="eventDes" placeholder="Description of Event"
+                name="eventDes" [(ngModel)]="newEvent.eventDes" required #eventDes="ngModel"
+                [ngClass]="{ 'is-invalid': addEvent.submitted && eventDes.invalid }"></textarea>
+            <div *ngIf="addEvent.submitted && eventDes.invalid" class="invalid-feedback">
+                <div *ngIf="eventDes.errors.required">required*</div>
+            </div>
+        </div>
+        <!-- upload images  -->
+
+        <!-- <div class="container row">
+            <div class="col-md-12">
+                <h1>Upload Image</h1>
+            </div>
+        </div>
+        <div class="container row">
+            <div class="col-md-6">
+                <input type="file" (change)="onFileChanged($event)" multiple>
+            </div>
+            <div class="col-md-6">
+                <input type="button" (click)="onUpload()" value="upload">
+            </div>
+        </div>
+        <hr/>
+        <div class="container row">
+            <div class="col-md-12">
+                <div *ngIf=message>{{message}}</div>
+            </div>
+        </div>
+        <div class="container row">
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+                    name="name" />
+            </div>
+            <div class="col-md-6">
+                <input type="button" (click)="getImage()" value="Get Image">
+            </div>
+        </div>
+        <div class="container row">
+            <div class="col-md-12">
+                <div *ngIf=retrievedImage>
+                    <img [src]="retrievedImage">
+                </div>
+            </div>
+        </div> -->
+        <!-- end of image upload -->
+
+        <div class="buttons">
+            <button type="submit" class="btn btn-outline-success" id="addButton">Add</button>
+            <button type="reset" class="btn btn-outline-danger"id="cancelButton">Cancel</button>
+        </div>
+    </form>
+</div>
+</div>
+
+<router-outlet></router-outlet>

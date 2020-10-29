@@ -1,0 +1,181 @@
+
+<div class="container">
+    <!-- Trigger the modal with a button -->
+    <form>
+        <h1>Permissions</h1>
+        <div class="buttons">
+            <!-- <button type="button" class="btn btn-outline-success" 
+            (click)="savePermissions()">Save all permissions </button>
+            <br> -->
+            <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                data-target="#myModal" (click)="adminSelected()">Admin</button>
+            <br>
+            <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                data-target="#myModal" (click)="editorSelected()">Editor</button>
+            <br>
+            <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                data-target="#myModal" (click)="studentSelected()">Student</button>
+        </div>
+       <!-- <div>
+                <input type="checkbox" [(ngModel)]="admin" value="admin" (click)="show()" [ngModelOptions]="{standalone: true}" /> Admin
+            </div>
+            <div>
+                <input type="checkbox" [(ngModel)]="editor" value="editor" (click)="show()" [ngModelOptions]="{standalone: true}" />
+                Editor
+            </div>
+            <div>
+                <input type="checkbox" [(ngModel)]="student" value="student" (click)="show()"[ngModelOptions]="{standalone: true}" />
+                Student
+            </div> -->
+    </form>
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Set permissions</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="bs-example">
+                        <form name="form" (ngSubmit)="onSubmit()" #permissions="ngForm">
+                            <div class="operateButtons">
+                                <button type="button" class="btn btn-outline-info" (click)="displayAdd()">Add</button>
+                                <button type="button" class="btn btn-outline-info"
+                                    (click)="displayDelete()">Delete</button>
+                                <button type="button" class="btn btn-outline-info" (click)="displayEdit()">Edit</button>
+                                <button type="button" class="btn btn-outline-info"
+                                (click)="displayView()">View</button>
+                            </div>
+
+                            <div id="add" *ngIf="addPermissions">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" name="addNewUser" value="Add new User"
+                                        id="customCheck1" (change)="onChecked($event)" >
+                                    <label class="custom-control-label" for="customCheck1">Add New User</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mt-2">
+                                    <input type="checkbox" class="custom-control-input" name="addUniversity"
+                                        id="customCheck2" checked>
+                                    <label class="custom-control-label" for="customCheck2">Add University</label>
+                                </div>
+                            </div>
+
+
+                            <div id="delete" *ngIf="deletePermissions">
+                                <div class="custom-control custom-checkbox mt-2">
+                                    <input type="checkbox" class="custom-control-input" name="deleteUser"
+                                        id="customCheck3" checked>
+                                    <label class="custom-control-label" for="customCheck3">Delete User</label>
+                                </div>
+                                <div class="custom-control custom-checkbox mt-2">
+                                    <input type="checkbox" class="custom-control-input" name="deleteUniversity"
+                                        id="customCheck4" checked>
+                                    <label class="custom-control-label" for="customCheck4">Delete University</label>
+                                </div>
+                            </div>
+
+                            <div id="edit" *ngIf="editPermissions">
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="editUser"
+                                    id="customCheck5" checked>
+                                <label class="custom-control-label" for="customCheck5">Edit User</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="editIntroduction" id="customCheck6"
+                                    checked>
+                                <label class="custom-control-label" for="customCheck6">Edit Introduction</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="editCulture" id="customCheck7"
+                                    checked>
+                                <label class="custom-control-label" for="customCheck7">Edit Culture</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="editEncyclopedia" id="customCheck8"
+                                    checked>
+                                <label class="custom-control-label" for="customCheck8">Edit Encyclopedia</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="editProjects" id="customCheck9"
+                                    checked>
+                                <label class="custom-control-label" for="customCheck9">Edit Projects</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="editCasestudies"
+                                    id="customCheck10" checked>
+                                <label class="custom-control-label" for="customCheck10">Edit Case Studies</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="editEvents"
+                                    id="customCheck11" checked>
+                                <label class="custom-control-label" for="customCheck11">Edit Events</label>
+                            </div>
+                            <div class="custom-control custom-checkbox ">
+                                <input type="checkbox" class="custom-control-input" name="editExams"
+                                    id="customCheck12" checked>
+                                <label class="custom-control-label" for="customCheck12">Edit Exams</label>
+                            </div> 
+                        </div>
+
+                        <div id="view" *ngIf="viewPermissions">
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="viewUser"
+                                    id="customCheck13" checked>
+                                <label class="custom-control-label" for="customCheck13">View User</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="viewIntroduction" id="customCheck14"
+                                    checked>
+                                <label class="custom-control-label" for="customCheck14">View Introduction</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="viewCulture" id="customCheck15"
+                                    checked>
+                                <label class="custom-control-label" for="customCheck15">View Culture</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="viewEncyclopedia" id="customCheck16"
+                                    checked>
+                                <label class="custom-control-label" for="customCheck16">View Encyclopedia</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="viewProjects" id="customCheck17"
+                                    checked>
+                                <label class="custom-control-label" for="customCheck17">View Projects</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="viewCasestudies"
+                                    id="customCheck18" checked>
+                                <label class="custom-control-label" for="customCheck18">View Case Studies</label>
+                            </div>
+                            <div class="custom-control custom-checkbox mt-2">
+                                <input type="checkbox" class="custom-control-input" name="viewEvents"
+                                    id="customCheck19" checked>
+                                <label class="custom-control-label" for="customCheck19">View Events</label>
+                            </div>
+                            <div class="custom-control custom-checkbox ">
+                                <input type="checkbox" class="custom-control-input" name="viewExams"
+                                    id="customCheck20" checked>
+                                <label class="custom-control-label" for="customCheck20">View Exams</label>
+                            </div> 
+                        
+                    </div>
+                
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-outline-success" >Save</button>
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<router-outlet></router-outlet>

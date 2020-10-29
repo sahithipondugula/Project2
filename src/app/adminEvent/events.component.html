@@ -1,0 +1,163 @@
+<div class="container">
+    <form>
+        <nav aria-label="pager">
+            <a routerLink="/clientinfo" class="previous" style="color: white;font-size: 20px;"><span
+                    aria-hidden="true">&larr;</span> Back</a>
+            <!-- <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li> -->
+        </nav>
+        <br>
+        <div class="form-row">
+            <div class="dropdown form-group ">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                    (click)="getClientById()" aria-haspopup="true" aria-expanded="false">
+                    Select Event
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" data-toggle="modal" data-target="#myModal"
+                        *ngFor="let event of clientDataById.events"
+                        (click)="getSelectedEvent(event.autoId)">{{event.eventName}}</a>
+                </div>
+            </div>
+            <div class="form-group" style="margin-left:20px;">
+                <button class="btn btn-outline-info" id="createEventButton" routerLink="/createEvent">Add New Event</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Case Study</h2>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="bs-example">
+                        <form name="form" (ngSubmit)="updateEvent.form.valid && onSubmit()" #updateEvent="ngForm">
+                            <div class="form-row">
+
+                                <div class="form-group col-md-6">
+
+                                    <label class="label" for="eventId">Event ID</label>
+                                    <input type="text" class="form-control" id="eventId" placeholder="Enter Event ID"
+                                        name="eventId" [(ngModel)]="selectedEvent.eventId" required #eventId="ngModel"
+                                        [ngClass]="{ 'is-invalid': updateEvent.submitted && eventId.invalid }">
+                                    <div *ngIf="updateEvent.submitted && eventId.invalid" class="invalid-feedback">
+                                        <div *ngIf="eventId.errors.required">ID is required*</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="label" for="eventName">Event Name</label>
+                                    <input type="text" class="form-control" id="eventName"
+                                        placeholder="Enter Event Name" name="eventName" [(ngModel)]="selectedEvent.eventName"
+                                        required #eventName="ngModel"
+                                        [ngClass]="{ 'is-invalid': updateEvent.submitted && eventName.invalid }">
+                                    <div *ngIf="updateEvent.submitted && eventName.invalid" class="invalid-feedback">
+                                        <div *ngIf="eventName.errors.required">Name is required*</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="label" for="place">Place</label>
+                                    <input type="text" class="form-control" id="place" placeholder="Enter place"
+                                        name="place" [(ngModel)]="selectedEvent.place" required #place="ngModel"
+                                        [ngClass]="{ 'is-invalid': updateEvent.submitted && place.invalid }">
+                                    <div *ngIf="updateEvent.submitted && place.invalid" class="invalid-feedback">
+                                        <div *ngIf="place.errors.required">Event Place is required*</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="label" for="date">Date of Event</label>
+                                    <input type="text" class="form-control" id="date" name="date"
+                                        [(ngModel)]="selectedEvent.date" required #date="ngModel"
+                                        [ngClass]="{ 'is-invalid': updateEvent.submitted && date.invalid }">
+                                    <div *ngIf="updateEvent.submitted && date.invalid" class="invalid-feedback">
+                                        <div *ngIf="date.errors.required">Event Place is required*</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label class="label" for="status">Status</label>
+                                    <input type="text" class="form-control" id="status" name="active"
+                                        [(ngModel)]="selectedEvent.active" required #active="ngModel"
+                                        [ngClass]="{ 'is-invalid': updateEvent.submitted && active.invalid }">
+                                    <div *ngIf="updateEvent.submitted && active.invalid" class="invalid-feedback">
+                                        <div *ngIf="active.errors.required">Event Place is required*</div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="label" for="university">University Name</label>
+                                    <input type="text" class="form-control" id="university"
+                                        value="{{clientDataById.name}}" readonly>
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="label" for="eventDes">Description of Event</label>
+                                <textarea type="text" class="form-control" id="eventDes"
+                                    placeholder="Description of Event" name="eventDes" [(ngModel)]="selectedEvent.eventDes"
+                                    required #eventDes="ngModel"
+                                    [ngClass]="{ 'is-invalid': updateEvent.submitted && eventDes.invalid }"></textarea>
+                                <div *ngIf="updateEvent.submitted && eventDes.invalid" class="invalid-feedback">
+                                    <div *ngIf="eventDes.errors.required">required*</div>
+                                </div>
+                            </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-outline-success">Save Page</button>
+                        <button type="reset" class="btn btn-outline-danger" >Cancel</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+<router-outlet></router-outlet>
+
+
+
+<!-- <div class="container">
+<div class="container row">
+    <div class="col-md-6">
+        <input type="file" (change)="onFileChanged($event)">
+    </div>
+    <div class="col-md-6">
+        <input type="button" (click)="onUpload()" value="upload">
+    </div>
+</div>
+<hr />
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=message>{{message}}</div>
+    </div>
+</div>
+<div class="container row">
+    <div class="col-md-6">
+        <input type="text" class="form-control" id="name" placeholder="image name" [(ngModel)]="imageName"
+            name="name" />
+    </div>
+    <div class="col-md-6">
+        <input type="button" (click)="getImage()" value="Get Image">
+    </div>
+</div>
+<div class="container row">
+    <div class="col-md-12">
+        <div *ngIf=retrievedImage>
+            <img [src]="retrievedImage">
+        </div>
+    </div>
+</div>
+</div> -->

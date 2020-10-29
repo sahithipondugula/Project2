@@ -1,0 +1,7 @@
+<div class="btn-group" role="group">
+
+    <button class="btn btn-secondary" [disabled]="!canMoveToPreviousPage" (click)="moveToPreviousPage()">Previous</button>
+    <button class="btn btn-secondary" disabled style="width:100px">{{pageIndex + 1}} / {{_pageCount}}</button>
+    <button class="btn btn-secondary" [disabled]="!canMoveToNextPage" (click)="moveToNextPage()">next</button>
+   
+  </div>

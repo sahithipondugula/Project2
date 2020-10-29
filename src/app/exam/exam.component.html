@@ -1,0 +1,97 @@
+<head>
+  <!-- <link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+      integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+      crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+      integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+      integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+      crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
+  <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" /> -->
+  <!---------------bootstrap 4.5-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"></script>
+
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+      
+		<!------------for popup modal bootstrap-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+
+    	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	
+</head>
+
+<body style="padding-left: 3cm; ">
+<div class="question" style=" font-size: 23px; font-family: 'Times New Roman', Times, serif;
+align-content: center; text-align: center;"
+ *ngFor="let question of modules | slice:pageIndex*pageSize:(pageIndex+1)*pageSize; let index = index">
+ <div class="text" style="float: left;">Question:{{question.eventid}}</div><br/><br/>
+ <div class="text"  style="float: left;">{{question.daterow}}</div><br>
+	<div *ngFor="let option of question.option; let innerIndex = index">
+    <table><tr><th>
+    <input style="float: left;" [(ngModel)]="question.selected" type="radio" [name]="index" [id]="index + innerIndex" [value]="innerIndex" />&nbsp;
+  </th><th>
+    <label class="option"  style="float:left;font-family:'Times New Roman', Times, serif;">{{option}}</label><br/>
+  </th></tr></table>
+  </div>
+</div>
+
+
+<!-- <div [itemCount]="25" [(pageIndex)]="pageIndex" [pageSize]="pageSize"></div> -->
+   
+
+<div class="btn-group" role="group" style="float: left;">
+
+  <button class="btn btn-warning" [disabled]="!canMoveToPreviousPage" style="width:100px; color: black; font-weight: bold;"(click)="moveToPreviousPage()">Previous</button>
+  <button class="btn btn-secondary" disabled style="width:100px; color: black;">{{pageIndex + 1}} / {{_pageCount}}</button>
+  <button class="btn btn-warning" [disabled]="!canMoveToNextPage" (click)="moveToNextPage()">Next</button>
+ 
+ <br/><br/>     
+</div>
+
+<div class="button" >
+<button style="float: left; " type="button" (click)="GetScore()" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Submit
+</button></div>
+<!-- style="padding: 2cm 2cm; color: purple;">
+<button class="btn btn-success"(click)="GetScore()" style="float: right; ">Submit</button></div> -->
+</body>
+
+
+
+
+
+<div class="modal fade" [ngClass]="{'show':showmodal}" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Result</h5>
+       
+      </div>
+      <div class="modal-body">
+      <h3>Total Percentage &nbsp;&nbsp;{{result}}%</h3>
+      <h3>Result &nbsp;&nbsp;{{report}}</h3>
+
+      </div>
+     
+    </div>
+  </div>
+</div>

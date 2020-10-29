@@ -1,0 +1,38 @@
+<div class="container">
+
+    <a routerLink="/encyclopedia" class="previous" style="color: white;font-size: 30px;"><span
+            aria-hidden="true">&larr;</span> Back</a>
+    <div class="div-container">
+        <form (ngSubmit)="onSubmitEncyclopedia()">
+            <!-- <li class="next"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li> -->
+
+
+            <div class="casestudy">
+
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+
+                        <label class="label" for="encyclopediaId">Encyclopedia ID</label>
+                        <input type="text" class="form-control" id="encyclopediaId" required
+                            [(ngModel)]="createEncyclopedia.encyclopedia_id" name="encyclopedia_id">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="label" for="status">Status</label>
+                        <input type="text" class="form-control" id="status" required
+                            [(ngModel)]="createEncyclopedia.active" name="active">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="label" for="problemstatement">Encyclopedia Data</label>
+                    <textarea class="form-control" id="data" type="text" required [(ngModel)]="createEncyclopedia.about"
+                        name="about"></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-outline-success">Submit</button>
+            <button type="button" class="btn btn-outline-danger" routerLink="/encyclopedia">Cancel</button>
+        </form>
+    </div>
+</div>

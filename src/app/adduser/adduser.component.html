@@ -1,0 +1,226 @@
+<head>
+    <!-- <link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> -->
+  
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+        integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.1/imagesloaded.pkgd.min.js"></script>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" /> -->
+    <!---------------bootstrap 4.5-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+  
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  
+        
+          <!------------for popup modal bootstrap-->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+  
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      
+  </head>
+  
+
+<div class="container">
+    <div class="div-container">
+    <form name="form" (ngSubmit)="addUser.form.valid && onSubmit()" #addUser="ngForm">
+     <div class="form-row">
+        <div class="form-group col-md-6">
+            <label class="label" for="EmployeeId">Employee ID</label>
+            <input type="text" class="form-control" id="EmployeeId" required [(ngModel)]="newUser.employeeId"
+                name="employeeId" #employeeId="ngModel"
+                [ngClass]="{ 'is-invalid': addUser.submitted && employeeId.invalid }">
+
+            <div *ngIf="addUser.submitted && employeeId.invalid" class="invalid-feedback">
+                <div *ngIf="employeeId.errors.required">ID is required</div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="label" for="active">Status</label>
+            <input type="text" class="form-control" id="active" required [(ngModel)]="newUser.active" name="active"
+                #active="ngModel" [ngClass]="{ 'is-invalid': addUser.submitted && active.invalid }">
+
+            <div *ngIf="addUser.submitted && active.invalid" class="invalid-feedback">
+                <div *ngIf="active.errors.required">required**</div>
+            </div>
+        </div>
+     </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="label" for="firstName">First Name</label>
+                <input type="text" class="form-control" id="firstName" required [(ngModel)]="newUser.firstName"
+                    name="firstName" #firstName="ngModel"
+                    [ngClass]="{ 'is-invalid': addUser.submitted && firstName.invalid }">
+
+                <div *ngIf="addUser.submitted && firstName.invalid" class="invalid-feedback">
+                    <div *ngIf="firstName.errors.required">required**</div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="label" for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName" required [(ngModel)]="newUser.lastName"
+                    name="lastName" #lastName="ngModel"
+                    [ngClass]="{ 'is-invalid': addUser.submitted && lastName.invalid }">
+
+                <div *ngIf="addUser.submitted && lastName.invalid" class="invalid-feedback">
+                    <div *ngIf="lastName.errors.required">required**</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="label" for="email">Email</label>
+                <input type="email" class="form-control" id="email" required [(ngModel)]="newUser.email" name="email"
+                    #email="ngModel" [ngClass]="{ 'is-invalid': addUser.submitted && email.invalid }">
+
+                <div *ngIf="addUser.submitted && email.invalid" class="invalid-feedback">
+                    <div *ngIf="email.errors.required">required**</div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="label" for="password">Password</label>
+                <input type="text" class="form-control" id="password" required [(ngModel)]="newUser.password"
+                    name="password" #password="ngModel"
+                    [ngClass]="{ 'is-invalid': addUser.submitted && password.invalid }">
+
+                <div *ngIf="addUser.submitted && password.invalid" class="invalid-feedback">
+                    <div *ngIf="password.errors.required">required**</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+           
+           
+            <div class="form-group col-md-6">
+                <label class="label" for="mobile">Mobile</label>
+                <input type="text" class="form-control" id="mobile" required [(ngModel)]="newUser.mobile" name="mobile"
+                    #mobile="ngModel" [ngClass]="{ 'is-invalid': addUser.submitted && mobile.invalid }">
+
+                <div *ngIf="addUser.submitted && mobile.invalid" class="invalid-feedback">
+                    <div *ngIf="mobile.errors.required">required**</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label class="label" for="roles">Select Role : </label>
+                <select id="roles"  (change)="selectChangeHandlerRole($event)" 
+                    required>  
+                    <option selected disabled>select</option>              
+                    <option value="admin">Admin</option>
+                    <option value="editor">Editor</option>
+                    <option value="student">Student</option>             
+                </select>          
+            </div>
+        </div>
+<br>
+      
+        <!-- <div class="assignpoject" *ngIf="showProjects">
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label class="label" for="client">Select Client : </label>
+                    <div class="ng-autocomplete">
+                        <ng-autocomplete
+                          [data]="clients"
+                          [searchKeyword]="keyword"
+                          placeHolder="Select Client"
+                          (selected)='selectEvent($event)'
+                          (inputChanged)='onChangeSearch($event)'
+                          (inputFocused)='onFocused($event)'
+                          historyIdentifier="clients"
+                          [itemTemplate]="itemTemplate"
+                          [notFoundTemplate]="notFoundTemplate">
+                        </ng-autocomplete>
+                      
+                        <ng-template #itemTemplate let-item>
+                          <a [innerHTML]="item.name"></a>
+                        </ng-template>
+                      
+                        <ng-template #notFoundTemplate let-notFound>
+                          <div [innerHTML]="notFound"></div>
+                        </ng-template>
+                      </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="label" for="client">Select Project :<i class="fa fa-caret-down" aria-hidden="true"></i> </label>
+                        <div class="ng-autocomplete">
+                            <ng-autocomplete
+                              [data]="selectedClientData.project"
+                              [searchKeyword]="keyword"
+                              placeHolder="Select Project"
+                              (selected)='selectProjectEvent($event)'
+                              (inputChanged)='onChangeSearch($event)'
+                              (inputFocused)='onFocused($event)'
+
+                              [itemTemplate]="itemTemplate"
+                              [notFoundTemplate]="notFoundTemplate">
+                            </ng-autocomplete>
+                          
+                            <ng-template #itemTemplate let-item>
+                              <a [innerHTML]="item.name"></a>
+                            </ng-template>
+                          
+                            <ng-template #notFoundTemplate let-notFound>
+                              <div [innerHTML]="notFound"></div>
+                            </ng-template>
+                          </div>
+                        </div>
+                    <!-- <select class="clients"  (change)="selectChangeHandlerClient($event)">
+                        <option selected disabled>select</option>
+                        <option   value={{client.clientAutoId}} *ngFor="let client of clients">{{client.name}}</option>
+                    </select> -->
+                <!-- </div> -->
+                <!-- <li class="nav-item dropdown">
+              
+                    <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" (click) = "getAllClients()" data-toggle="dropdown"
+                      aria-haspopup="true" aria-expanded="false">
+                      Select Client
+                    </a>
+                    <div class="dropdown-menu" id="universities"aria-labelledby="navbarDropdownMenuLink" >              
+                          <a class="dropdown-item" *ngFor = "let client of clients " (click)="getClientDetails(client.clientAutoId)"> {{client.name}}</a>            
+                    </div>
+                  </li>
+      {{selectedClientData.name}} -->
+<!--       
+                <div class="form-group col-md-6">
+                    <label class="label" for="project">Select Project : </label>
+                    <select class="projects"  (change)="selectChangeHandlerProject($event)">
+                        <option selected disabled>select</option>
+                        <option   value={{project.projAutoId}} *ngFor="let project of selectedClientData.project">
+                            {{project.name}}</option>
+                    </select>
+                </div> -->
+
+           <!-- </div>
+        </div> -->
+      <div>
+            <button class="btn btn-outline-success" type="submit">Add</button>
+            <button type="reset" class="btn btn-outline-danger">Cancel</button>
+        </div>
+
+    </form>
+    </div>
+</div>
+
+<router-outlet></router-outlet>

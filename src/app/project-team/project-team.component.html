@@ -1,0 +1,94 @@
+<div class="container">
+    <a routerLink="/" class="previous" style="color: white;"><span aria-hidden="true">&larr;</span>
+        Back</a><br><br>
+    <div class="div-container">
+        <div class="form row">
+            <div class="form-group col-md-6">
+ <label class="label" for="client">Select Project</label>
+            </div>
+                
+            <div class="form-group col-md-6">
+               
+                <div class="ng-autocomplete">
+                    <ng-autocomplete class="pro"
+                      [data]="allProjectsList"
+                      [searchKeyword]="keyword"
+                      placeHolder="Select Project"
+                      
+                      (selected)='selectProjectEvent($event)'
+                      (inputChanged)='onChangeSearch($event)'
+                      (inputFocused)='onFocused($event)'
+
+                      [itemTemplate]="itemTemplate"
+                      [notFoundTemplate]="notFoundTemplate">
+                      <i class="fa fa-caret-down"style="color: black;" aria-hidden="true"></i>
+                    </ng-autocomplete>
+                 
+                    <ng-template #itemTemplate let-item>
+                      <a [innerHTML]="item.name"></a>
+                    </ng-template>
+                  
+                    <ng-template #notFoundTemplate let-notFound>
+                      <div [innerHTML]="notFound"></div>
+                    </ng-template>
+                 
+                  </div>
+                </div>
+                
+                
+               
+            </div>
+            <div class="form row">
+                <button type="button" class="btn btn-outline-info" (click)="showTeam()">Show Team</button>
+            </div>
+                <!-- <p class="label">Select Project : </p><button class="btn dropdown-toggle" type="button" id="dropdowns"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{selectedProjectName}}
+                </button>
+                <div class="dropdown-menu" id="universities" aria-labelledby="role">
+                    <a class="dropdown-item" *ngFor="let project of allProjectsList"
+                        (click)="getSelectedProjectDetails(project.projAutoId,project.name)">
+                        {{project.name}}</a>
+                </div> -->
+              
+          
+        </div>
+    
+        <br>
+        <br>
+        <div class="form-row" *ngIf="showTeamTable">
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Employee Id</th>
+                        <th scope="col">Employee Name</th>
+                        <th scope="col">Action</th>
+                        <th scope="col">
+                            <button class="btn dropdown-toggle" type="button" id="dropdowns" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Add Team Member
+                            </button>
+                            <div class="dropdown-menu" id="universities" aria-labelledby="role">
+                                <a class="dropdown-item" *ngFor="let employee of allEmployees"
+                                    (click)="addEmployeeToTeam(employee.empAutoId)">
+                                    {{employee.email}}</a>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let team of selectedProjectTeam">
+                        <td>{{team.employeeId}}</td>
+                        <td>{{team.firstName}} {{team.lastName}}</td>
+                        <td><button (click)="deleteSelectedTeamMember(team.empAutoId)">Remove</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button type="button" class="btn btn-outline-success" (click)="onSubmit()">Save</button>
+        <button type="reset" class="btn btn-outline-danger">Cancel</button>
+    
+</div>

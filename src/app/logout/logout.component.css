@@ -1,0 +1,7 @@
+.alert{
+    position: relative;
+    margin-top: 5px!important;
+    top: 100%;
+    left:0;
+    width: 100%;
+}

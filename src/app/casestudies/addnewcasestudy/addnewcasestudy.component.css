@@ -1,0 +1,23 @@
+.label{
+  font-weight: bold;
+  font-size: larger;
+  color: white;
+}
+.container{
+margin-right: 0;
+  margin-left: 0;
+  padding-top: 100px;
+  padding-left: 100px;
+  padding-right: 250px;
+  padding-bottom: 30px;
+  background-image: url("https://www.fonewalls.com/wp-content/uploads/Amber-Orange-Solid-Color-Background-Wallpaper-for-Mobile-Phone-300x533.png");
+opacity: 1;
+background-repeat: repeat;
+max-width: 100%
+}
+.fa{
+color: white;
+}
+h3{
+color: white;
+}

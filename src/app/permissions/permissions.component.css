@@ -1,0 +1,23 @@
+h1{
+    color: whitesmoke;
+ 
+}
+.container{
+    padding-top: 90px;
+}
+
+.btn{
+    background-color: white;
+    width: 100px;
+    margin-top: 50px;
+    color: black;
+    border-radius: 30px;
+}
+.btn:hover{
+color: black;
+transform: scale(1.1);
+}
+#add{
+    
+    padding-top: 30px;
+}

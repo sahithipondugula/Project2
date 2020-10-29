@@ -1,0 +1,50 @@
+<div class="container">
+  <form name="form" (ngSubmit)="addproject.form.valid && onSubmitProject()" #addproject="ngForm">
+    <nav aria-label="pager">
+
+      <a routerLink="/projects" class="previous" style="color: white;font-size: 30px;"><span
+          aria-hidden="true">&larr;</span> Back</a>
+
+    </nav>
+
+    <div class="form-group">
+      <label class="label" for="name">projectId</label>
+      <input type="text" class="form-control" id="projectId" required [(ngModel)]="createProject.projectId"
+        name="projectId" #projectId="ngModel" [ngClass]="{ 'is-invalid': addproject.submitted && projectId.invalid }">
+      <div *ngIf="addproject.submitted && projectId.invalid" class="invalid-feedback">
+        <div *ngIf="projectId.errors.required">ID is required*</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label" for="name">Project Name</label>
+      <input type="text" class="form-control" id="name" required [(ngModel)]="createProject.name" name="name"
+        #name="ngModel" [ngClass]="{ 'is-invalid': addproject.submitted && name.invalid }">
+      <div *ngIf="addproject.submitted && name.invalid" class="invalid-feedback">
+        <div *ngIf="name.errors.required">Name is required*</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label" for="name">projectDescription</label>
+      <textarea type="text" class="form-control" id="projectDescription" required
+        [(ngModel)]="createProject.projectDescription" name="projectDescription" #projectDescription="ngModel"
+        [ngClass]="{ 'is-invalid': addproject.submitted && projectDescription.invalid }"></textarea>
+      <div *ngIf="addproject.submitted && projectDescription.invalid" class="invalid-feedback">
+        <div *ngIf="projectDescription.errors.required">Please fill data*</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="label" for="name">Status</label>
+      <input type="text" class="form-control" id="active" required [(ngModel)]="createProject.active" name="active"
+        #active="ngModel" [ngClass]="{ 'is-invalid': addproject.submitted && active.invalid }">
+      <div *ngIf="addproject.submitted && active.invalid" class="invalid-feedback">
+        <div *ngIf="active.errors.required">Please enter "0" or "1"</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-outline-success">Submit</button>
+    <button type="reset" class="btn btn-outline-danger" >Cancel</button>
+  </form>
+</div>

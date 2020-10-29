@@ -1,0 +1,51 @@
+.label{
+  font-weight: bold;
+  font-size: larger;
+  color: black;
+}
+.container{
+  margin-right: 0;
+  margin-left: 0;
+  padding-top: 100px;
+  padding-left: 100px;
+  padding-right: 400px;
+  padding-bottom: 30px;
+  background-image: url("https://www.fonewalls.com/wp-content/uploads/Amber-Orange-Solid-Color-Background-Wallpaper-for-Mobile-Phone-300x533.png");
+  opacity: 1;
+  background-repeat: repeat;
+  max-width: 100%;
+
+}
+#file{
+  color: white;
+  border-style: double;
+  margin-right: 20px;
+}
+.fa{
+color: white;
+}
+h3{
+color: white;
+}
+
+#dropdownMenuButton{
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+}
+
+#dropdownMenuButton:hover{
+  color:white;
+  background-color: black;
+}
+
+#createEventButton{
+  background-color: white;
+  color: black;
+  border-radius: 20px;
+}
+
+#createEventButton:hover{
+  color:white;
+  background-color: black;
+}
